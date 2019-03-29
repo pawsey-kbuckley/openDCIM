@@ -326,7 +326,10 @@ class Cabinet {
 		
 		//$sql="SELECT SUM(Height) AS Occupancy FROM fac_Device WHERE Cabinet=$CabinetID;";
 		//JMGA halfdepth height calculation
-		$sql = "select sum(if(HalfDepth,Height/2,Height)) as Occupancy from fac_Device where ParentDevice=0 AND Cabinet=$CabinetID";
+		//$sql = "select sum(if(HalfDepth,Height/2,Height)) as Occupancy from fac_Device where ParentDevice=0 AND Cabinet=$CabinetID";
+		//KMB don't count Blanks
+		$sql = "SELECT SUM(if(HalfDepth,Height/2,Height)) AS Occupancy FROM fac_Device 
+		  WHERE DeviceType!='Blank' AND ParentDevice=0 AND Cabinet=$CabinetID";
 
 		if(!$row=$dbh->query($sql)->fetch()){
 			$info=$dbh->errorInfo();
