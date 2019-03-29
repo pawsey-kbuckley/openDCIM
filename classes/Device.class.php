@@ -97,7 +97,7 @@ class Device {
 		global $config;
 
 		//Keep weird values out of DeviceType
-		$validdevicetypes=array('Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU','Sensor');
+		$validdevicetypes=array('Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU','Sensor', 'Blank');
 		$validHypervisors=array('ESX', 'ProxMox', 'None' );
 		$validSNMPVersions=array(1,'2c',3);
 		$validv3SecurityLevels=array('noAuthNoPriv','authNoPriv','authPriv');
@@ -1706,7 +1706,7 @@ class Device {
     $devList = array();
     
     foreach ( $sourceList as $devRow ) {    
-      if ( ( $devRow->DeviceType == 'Patch Panel' || $devRow->DeviceType == 'Physical Infrastructure' || $devRow->ParentDevice > 0 ) && ( $devRow->PowerSupplyCount == 0 ) )
+      if ( ( $devRow->DeviceType == 'Patch Panel' || $devRow->DeviceType == 'Physical Infrastructure' || $devRow->DeviceType == 'Blank' || $devRow->ParentDevice > 0 ) && ( $devRow->PowerSupplyCount == 0 ) )
         continue;
 
       $pc->DeviceID = $devRow->DeviceID;

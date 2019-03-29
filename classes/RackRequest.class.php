@@ -57,7 +57,7 @@ class RackRequest {
 	// Create MakeSafe / MakeDisplay functions
 	function MakeSafe(){
 		//Keep weird values out of DeviceType
-		$validdevicetypes=array('Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU');
+		$validdevicetypes=array('Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU','Blank');
 		$validrequestactions=array('new', 'change', 'move', 'retire'); // Empty string is the default value, e.g. when actions are disabled
 
 		$this->RequestID=intval($this->RequestID);

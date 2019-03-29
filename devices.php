@@ -838,6 +838,7 @@
 						'Physical Infrastructure' => __("Physical Infrastructure"),
 						'CDU' => __("CDU"),
 						'Sensor' => __("Sensor"),
+						'Blank' => __("Blank"),
 						);
 	}
 
@@ -2317,7 +2318,7 @@ $connectioncontrols.=($dev->DeviceID>0 && !empty($portList))?'
 
 	//HTML content condensed for PHP logic clarity.
 	// If $pwrCords is null then we're creating a device record. Skip power checking.
-	if(!is_null($pwrCords)&&((isset($_POST['action'])&&$_POST['action']!='Child')||!isset($_POST['action']))&&(!in_array($dev->DeviceType,array('Physical Infrastructure','Patch Panel')))){
+	if(!is_null($pwrCords)&&((isset($_POST['action'])&&$_POST['action']!='Child')||!isset($_POST['action']))&&(!in_array($dev->DeviceType,array('Physical Infrastructure','Patch Panel','Blank')))){
 		print "		<div>\n\t\t\t<div><a id=\"power\">$chassis ".__("Power Connections")."</a></div>
 			<div><div class=\"table border power\">
 				<div>
@@ -2362,7 +2363,7 @@ $connectioncontrols.=($dev->DeviceID>0 && !empty($portList))?'
 
 	$jsondata=array();// array to store user ability to modify a port. index=portnumber, value=true/false
 	// New simplified model will apply to all devices except for patch panels and physical infrastructure
-	if(!in_array($dev->DeviceType,array('Physical Infrastructure','Patch Panel')) && !empty($portList) ){
+	if(!in_array($dev->DeviceType,array('Physical Infrastructure','Patch Panel','Blank')) && !empty($portList) ){
 		print "		<div>\n		  <div><a id=\"net\">".__("Connections")."</a></div>\n		  <div>\n			<div class=\"table border switch\">\n				<div>
 				<div>#</div>
 				<div id=\"spn\">".__("Port Name")."</div>

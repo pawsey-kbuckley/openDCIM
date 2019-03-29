@@ -374,7 +374,7 @@ class PowerPorts {
 			$portList[$row['PortNumber']]=PowerPorts::RowToObject($row);
 		}
 		
-		if( sizeof($portList)==0 && $dev->DeviceType!="Physical Infrastructure" ){
+		if( sizeof($portList)==0 && $dev->DeviceType!="Physical Infrastructure" && $dev->DeviceType!="Blank" ){
 			// somehow this device doesn't have ports so make them now
 			$portList=PowerPorts::createPorts($dev->DeviceID);
 		}
@@ -398,7 +398,7 @@ class PowerPorts {
 			$portList[$row['PortNumber']]=PowerPorts::RowToObject($row);
 		}
 		
-		if( sizeof($portList)==0 && $dev->DeviceType!="Physical Infrastructure" ){
+		if( sizeof($portList)==0 && $dev->DeviceType!="Physical Infrastructure" && $dev->DeviceType!="Blank" ){
 			// somehow this device doesn't have ports so make them now
 			$portList=PowerPorts::createPorts($dev->DeviceID);
 		}

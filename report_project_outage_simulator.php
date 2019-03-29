@@ -381,7 +381,7 @@ if (!isset($_REQUEST['action'])){
 
 		// Basic device selection based on the CabinetID
 		// Filter out all reservations, devices with no power supplies, power strips, and chassis slot cards
-		$sql = "SELECT * FROM fac_Device WHERE Reservation=0 AND PowerSupplyCount>0 AND DeviceType not in ('CDU','Patch Panel','Physical Infrastructure') AND ParentDevice=0 AND Cabinet=" . intval( $cabRow->CabinetID );
+		$sql = "SELECT * FROM fac_Device WHERE Reservation=0 AND PowerSupplyCount>0 AND DeviceType not in ('CDU','Patch Panel','Physical Infrastructure','Blank') AND ParentDevice=0 AND Cabinet=" . intval( $cabRow->CabinetID );
 
 		// If tags were added, only include devices with tags that are in the Include array
 		if ( sizeof( $includeTags ) > 0 ) {

@@ -51,7 +51,7 @@
         );
         $deviceTypes = array(
                 'Server','Appliance','Storage Array','Switch','Chassis',
-                'Patch Panel','Physical Infrastructure','CDU','Sensor'
+                'Patch Panel','Physical Infrastructure','CDU','Sensor','Blank',
         );
         # handle the request variables and build the device lists.
         if(isset($_REQUEST['containerid'])){

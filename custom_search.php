@@ -110,7 +110,7 @@
 				});
 				break;
 			case "DeviceType":
-				var devTypes = Array( 'Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU','Sensor' );
+				var devTypes = Array( 'Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU','Sensor','Blank' );
 				select=$('<select />').attr('name','DeviceType');
 				for(var i in devTypes){
 					select.append($('<option />').text(devTypes[i]).val(devTypes[i]));

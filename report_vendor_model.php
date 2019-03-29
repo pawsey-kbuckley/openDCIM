@@ -59,7 +59,7 @@
     print "<div><div>" . __("Device Type") . "</div><div>";
     print "<select name=\"devicetype\"><option value=\"all\">All</option>";
 
-    foreach ( array( "Server", "Appliance", "Storage Array", "Switch", "Chassis", "Patch Panel", "Physical Infrastructure", "CDU", "Sensor" ) as $devType ) {
+    foreach ( array( "Server", "Appliance", "Storage Array", "Switch", "Chassis", "Patch Panel", "Physical Infrastructure", "CDU", "Sensor", "Blank" ) as $devType ) {
         printf( "<option value=\"%s\">%s</option>\n", $devType, $devType );
     }
 
@@ -83,7 +83,7 @@
 
         $man = new Manufacturer();
         $manID = intval( $_REQUEST['manufacturerid'] );
-        $dType = in_array( $_REQUEST['devicetype'], array( "Server", "Appliance", "Storage Array", "Switch", "Chassis", "Patch Panel", "Physical Infrastructure", "CDU", "Sensor", "All"))?$_REQUEST['devicetype']:"All";
+        $dType = in_array( $_REQUEST['devicetype'], array( "Server", "Appliance", "Storage Array", "Switch", "Chassis", "Patch Panel", "Physical Infrastructure", "CDU", "Sensor", "Blank", "All"))?$_REQUEST['devicetype']:"All";
 
         if ( $manID > 0 ) {
             $man->ManufacturerID = $manID;

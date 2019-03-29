@@ -500,6 +500,7 @@ echo '			</select>
 				<option value="Chassis"'.(($req->DeviceType=="Chassis")?' selected':'').'>',__("Chassis"),'</option>
 				<option value="Patch Panel"'.(($req->DeviceType=="Patch Panel")?' selected':'').'>',__("Patch Panel"),'</option>
 				<option value="Physical Infrastructure"'.(($req->DeviceType=="Physical Infrastructure")?' selected':'').'>',__("Physical Infrastructure"),'</option>
+				<option value="Blank"'.(($req->DeviceType=="Blank")?' selected':'').'>',__("Blank"),'</option>
 			</select>
 		</div>
 	</div>

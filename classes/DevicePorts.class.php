@@ -595,7 +595,7 @@ class DevicePorts {
 			$portList[$row['PortNumber']]=DevicePorts::RowToObject($row);
 		}
 		
-		if( sizeof($portList)==0 && $dev->DeviceType!="Physical Infrastructure" ){
+		if( sizeof($portList)==0 && $dev->DeviceType!="Physical Infrastructure" && $dev->DeviceType!="Blank" ){
 			// somehow this device doesn't have ports so make them now
 			$portList=DevicePorts::createPorts($dev->DeviceID);
 		}

@@ -27,7 +27,7 @@
 	
 	// Get a list of all non-switch and non-patch panel devices
 	$sql = "select DeviceID, Ports, DeviceType from fac_Device WHERE
-		DeviceType NOT IN ('Physical Infrastructure', 'Switch', 'Patch Panel')";
+		DeviceType NOT IN ('Physical Infrastructure', 'Switch', 'Patch Panel', 'Blank')";
 	$swCount = $dbh->prepare( "select * from fac_SwitchConnection where EndpointDeviceID=:deviceid order by EndpointPort ASC" );
 	$ppCount = $dbh->prepare( "select * from fac_PatchConnection where FrontEndpointDeviceID=:deviceid order by FrontEndpointPort ASC" );
 	$portHash = array();

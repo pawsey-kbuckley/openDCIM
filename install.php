@@ -461,6 +461,7 @@ function upgrade(){
 
 		// Retrieve a list of all devices and make ports for them.
 		$sql='SELECT DeviceID,Ports,DeviceType from fac_Device WHERE 
+			DeviceType!="Blank" AND
 			DeviceType!="Physical Infrastructure" AND Ports>0;';
 
 		$errors=array();

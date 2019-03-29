@@ -49,7 +49,7 @@ class DeviceTemplate {
 	}
 
 	function MakeSafe(){
-		$validDeviceTypes=array('Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU','Sensor');
+		$validDeviceTypes=array('Server','Appliance','Storage Array','Switch','Chassis','Patch Panel','Physical Infrastructure','CDU','Sensor','Blank');
 		$validSNMPVersions=array(1,'2c',3);
 
 		// Instead of defaulting to v2c for snmp we'll default to whatever the system default is
