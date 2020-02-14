@@ -80,7 +80,7 @@ class PowerPanel {
 		$this->NumberOfPoles=max(intval($this->NumberOfPoles), 0);
 		$this->MainBreakerSize=max(intval($this->MainBreakerSize), 0);
 		$this->PanelVoltage=max(intval($this->PanelVoltage), 0);
-		$this->NumberScheme=in_array($this->NumberScheme, array( "Odd/Even", "Sequential", "Busway"))?$this->NumberScheme:"Sequential";
+		$this->NumberScheme=in_array($this->NumberScheme, array( "Odd/Even", "Sequential", "Busway", "Pawsey"))?$this->NumberScheme:"Sequential";
 		$this->ParentPanelID=intval($this->ParentPanelID);
 		$this->ParentBreakerName=sanitize($this->ParentBreakerName);
 		$this->PanelIPAddress=sanitize($this->PanelIPAddress);
@@ -372,6 +372,9 @@ class PowerPanel {
 				$scheduleItem->Pole = $poleId;
 				$adder=1;
 				if($this->NumberScheme=="Odd/Even") {
+					$adder=2;
+				}
+				if($this->NumberScheme=="Pawsey") {
 					$adder=2;
 				}
 				$addError=false;	

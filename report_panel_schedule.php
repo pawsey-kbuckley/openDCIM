@@ -163,6 +163,9 @@
 		if($panel->NumberScheme=="Odd/Even") {
 			$totalCols=4;
 		}
+		if($panel->NumberScheme=="Pawsey") {
+			$totalCols=4;
+		}
         
 		$reportHTML.= '<table class="items" width="100%">';
 		$reportHTML.= '<thead>';
@@ -186,6 +189,36 @@
 					$reportHTML .= '<tr><td class="polenumber panelleft">'.$count.'</td>';
 					$reportHTML .= $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelleft", true);
 				}
+			}
+
+		} elseif($panel->NumberScheme=="Pawsey") {
+			$reportHTML.= '<tr><td width="5%">'.__("Pole").'</td>';
+			$reportHTML.= '<td width="45%">'.__("Circuit").'</td>';
+			$reportHTML.= '<td width="5%">'.__("Pole").'</td>';
+			$reportHTML.= '<td width="45%">'.__("Circuit").'</td></tr></thead><tbody>';
+
+			$pawseyL=1;
+			$pawseyR=2;	
+			for($count=1; $count<=$panel->NumberOfPoles; $count++) {
+				if(($count % 7) < 3) {
+					$pawseyC = "r";
+				} elseif(($count % 7) < 5) {
+					$pawseyC = "w";
+				} else {
+					$pawseyC = "b";
+				}
+				if($count % 2 == 0) {
+					$reportHTML .= '<td class="polenumber panelright">'.$pawseyR.$pawseyC.'</td>';
+					$reportHTML .= $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelright", true);
+					$reportHTML .= '</tr>';
+				} else {
+					$reportHTML .= '<tr><td class="polenumber panelleft">'.$pawseyL.$pawseyC.'</td>';
+					$reportHTML .= $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelleft", true);
+				}
+			}
+			if(($count % 6) == 0) {
+				$pawseyL += 2;
+				$pawseyR += 2;
 			}
 
 		} else {

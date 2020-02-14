@@ -275,7 +275,7 @@ echo '	</select>
 
 // This is messy but since we are actually storing this value in the db and we use it elsewhere this
 // worked out best
-    $panelType = array( "Odd/Even", "Sequential", "Busway" );
+    $panelType = array( "Odd/Even", "Sequential", "Busway", "Pawsey" );
 
    	foreach ( $panelType as $pType ) {
    		if ( $pType == $panel->NumberScheme ) {
@@ -379,6 +379,35 @@ echo '		</select>
 				} else {
 					print "<tr><td class=\"polenumber\">$count</td>";
 					print $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelleft", false);
+				}
+			}
+			print "</table>";
+		} elseif ($panel->NumberScheme=="Pawsey") {
+			$pawseyN=0;
+			$pawseyL=1;
+			$pawseyR=2;
+			print "<table>";
+			for($count=1; $count<=$panel->NumberOfPoles; $count++) {
+				$pawseyN++;
+				if(($pawseyN % 7) < 3) {
+					$pawseyC = "r";
+				} elseif(($pawseyN % 7) < 5) {
+					$pawseyC = "w";
+				} else {
+					$pawseyC = "b";
+				}
+				if(($count % 2) == 0) {
+					print "<td class=\"polenumber\">$pawseyR$pawseyC</td>";
+					print $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelright", false);
+					print "</tr>";
+				} else {
+					print "<tr><td class=\"polenumber\">$pawseyL$pawseyC</td>";
+					print $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelleft", false);
+				}
+				if(($count % 6) == 0) {
+					$pawseyL += 2;
+					$pawseyR += 2;
+					$pawseyN=0;
 				}
 			}
 			print "</table>";
