@@ -431,22 +431,23 @@ echo '		</select>
 			$pawseyN=0;
 			$pawseyL=1+$pawseyChassisOffset;
 			$pawseyR=2+$pawseyChassisOffset;
+			$poleC = "ffffff";
 			print "<table>";
 			for($count=1; $count<=$panel->NumberOfPoles; $count++) {
 				$pawseyN++;
 				if(($pawseyN % 7) < 3) {
-					$pawseyC = "r";
+					$poleC = "ff0000";
 				} elseif(($pawseyN % 7) < 5) {
-					$pawseyC = "w";
+					$poleC = "ffffff";
 				} else {
-					$pawseyC = "b";
+					$poleC = "7777ff";
 				}
 				if(($count % 2) == 0) {
-					print "<td class=\"polenumber\">$pawseyR$pawseyC</td>";
+					print "<td class=\"polenumber\"; bgcolor=\"$poleC\">$pawseyR</td>";
 					print $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelright", false);
 					print "</tr>";
 				} else {
-					print "<tr><td class=\"polenumber\">$pawseyL$pawseyC</td>";
+					print "<tr><td class=\"polenumber\"; bgcolor=\"$poleC\">$pawseyL</td>";
 					print $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelleft", false);
 				}
 				if(($count % 6) == 0) {
