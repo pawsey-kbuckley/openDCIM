@@ -386,9 +386,9 @@ echo '		</select>
 
 // Pawsey's Power Distribution Boards are typically broken into 
 //  SIX Chassis, A-F, each of which has 8 3-phase Breakers,
-//  however the 1st Breaker on Chassis B is not "B 1" 
-//  but "B 9" because the Breakers get numbered squentially
-//  without regard to the Chassis they are on.
+//  however the 1st Breaker on Chassis C is not "C 1" but "C 17"
+//  because the Breakers get numbered sequentially within the
+//  Board without regard to the Chassis they are on.
  
 	$pawseyChassisOffset = 0;
 
