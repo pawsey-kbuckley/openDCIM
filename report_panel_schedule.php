@@ -198,7 +198,7 @@
 			$reportHTML.= '<td width="45%">'.__("Circuit").'</td></tr></thead><tbody>';
 
 			$pawseyL=1;
-			$pawseyR=2;	
+			$pawseyR=2;
 			for($count=1; $count<=$panel->NumberOfPoles; $count++) {
 				if(($count % 7) < 3) {
 					$pawseyC = "r";
@@ -215,10 +215,10 @@
 					$reportHTML .= '<tr><td class="polenumber panelleft">'.$pawseyL.$pawseyC.'</td>';
 					$reportHTML .= $panel->getPanelScheduleLabelHtml($panelSchedule["panelSchedule"], $count, "panelleft", true);
 				}
-			}
-			if(($count % 6) == 0) {
-				$pawseyL += 2;
-				$pawseyR += 2;
+				if(($count % 6) == 0) {
+					$pawseyL += 2;
+					$pawseyR += 2;
+				}
 			}
 
 		} else {
@@ -281,7 +281,12 @@
 						if(is_numeric($currTrChildren[1]->innertext)) {
 							$filterTrRight[]=array($currTrChildren[1], $currTrChildren[2]);
 						} else {
-							$filterTrLeft[]=array($currTrChildren[0], $currTrChildren[1]);
+							sscanf($currTrChildren[1]->innertext,'%d%c',$pole,$colr);
+							if(($colr==98) || ($colr==114) || ($colr==119)) {
+								$filterTrRight[]=array($currTrChildren[1], $currTrChildren[2]);
+							} else {
+								$filterTrLeft[]=array($currTrChildren[0], $currTrChildren[1]);
+							}
 						}
 					} 
 				}

@@ -515,7 +515,7 @@ class PowerDistribution {
 				$error.=__("Facility Manager email address").": <span class=\"errmsg\">".$e->getMessage()."</span><br>\n";
 			}
 
-			$logofile=getcwd().'/'.$config->ParameterArray["PDFLogoFile"];
+			$logofile=getcwd().'/images/'.$config->ParameterArray["PDFLogoFile"];
 			$logo=$message->embed(Swift_Image::fromPath($logofile)->setFilename($logofile));
 				
 			$style = "
@@ -607,9 +607,6 @@ class PowerDistribution {
 			for($i=1;$i<$this->BreakerSize;$i++) {
 				$adder = $i;
 				if($panel->NumberScheme=="Odd/Even") {
-						$adder = $i*2;
-				}
-				if($panel->NumberScheme=="Pawsey") {
 						$adder = $i*2;
 				}
 				$next = $this->PanelPole+$adder;

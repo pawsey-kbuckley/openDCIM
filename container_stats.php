@@ -142,7 +142,7 @@ echo '<div class="main">
 					// use the 1st-born child of our parent: may, or may not, be us
 					firstcabinet=$('#c<?php echo $c->ContainerID;?> ').attr('id');
 				}
-				expandToItem('datacenters',firstcabinet);
+  				expandToItem('datacenters',firstcabinet);
 			}
 		}
 

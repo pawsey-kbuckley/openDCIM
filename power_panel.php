@@ -384,50 +384,51 @@ echo '		</select>
 			print "</table>";
 		} elseif ($panel->NumberScheme=="Pawsey") {
 
-// Pawsey's Power Distribution Boards are typically broken into 
+// Pawsey's Power Distribution Boards are typically broken into
 //  SIX Chassis, A-F, each of which has 8 3-phase Breakers,
-//  however the 1st Breaker on Chassis C is not "C 1" but "C 17"
-//  because the Breakers get numbered sequentially within the
+//  however the 1st Breaker on Chassis B is not "B 1" but "B 9"
+//  because the Breakers get numbered squentially within the
 //  Board without regard to the Chassis they are on.
- 
-	$pawseyChassisOffset = 0;
 
-	// Are we a Chassis
-	$posinstr = strpos($panel->PanelLabel, "Chassis") ;
-	if( $posinstr !== false ) {
+       $pawseyChassisOffset = 0;
 
-	  // We are a Chassis, what letter are we
-	  $posinstr += 7 ;
-	  $ltrinstr = strpos($panel->PanelLabel, "A", $posinstr) ;
-	  if( $ltrinstr !== false ) {
-		$pawseyChassisOffset = 0;
-	  } else {
-	    $ltrinstr = strpos($panel->PanelLabel, "B", $posinstr) ;
-	    if( $ltrinstr !== false ) {
-	      $pawseyChassisOffset = 8;
-	    } else {
-	      $ltrinstr = strpos($panel->PanelLabel, "C", $posinstr) ;
-	      if( $ltrinstr !== false ) {
-	        $pawseyChassisOffset = 16;
-	      } else {
-	        $ltrinstr = strpos($panel->PanelLabel, "D", $posinstr) ;
-	        if( $ltrinstr !== false ) {
-	          $pawseyChassisOffset = 24;
-	        } else {
-		  $ltrinstr = strpos($panel->PanelLabel, "E", $posinstr) ;
-		  if( $ltrinstr !== false ) {
-		    $pawseyChassisOffset = 32;
-		  } else {
-		    $ltrinstr = strpos($panel->PanelLabel, "F", $posinstr) ;
-		    if( $ltrinstr !== false ) {
-		      $pawseyChassisOffset = 40;
-	            }
-	          }
-	        }
-	      }
-	    }
-	  }
-	}
+       // Are we a Chassis
+       $posinstr = strpos($panel->PanelLabel, "Chassis") ;
+       if( $posinstr !== false ) {
+
+         // We are a Chassis, what letter are we
+         $posinstr += 7 ;
+         $ltrinstr = strpos($panel->PanelLabel, "A", $posinstr) ;
+         if( $ltrinstr !== false ) {
+           $pawseyChassisOffset = 0;
+         } else {
+           $ltrinstr = strpos($panel->PanelLabel, "B", $posinstr) ;
+           if( $ltrinstr !== false ) {
+             $pawseyChassisOffset = 8;
+           } else {
+             $ltrinstr = strpos($panel->PanelLabel, "C", $posinstr) ;
+             if( $ltrinstr !== false ) {
+               $pawseyChassisOffset = 16;
+             } else {
+               $ltrinstr = strpos($panel->PanelLabel, "D", $posinstr) ;
+               if( $ltrinstr !== false ) {
+                 $pawseyChassisOffset = 24;
+               } else {
+                 $ltrinstr = strpos($panel->PanelLabel, "E", $posinstr) ;
+                 if( $ltrinstr !== false ) {
+                   $pawseyChassisOffset = 32;
+                 } else {
+                   $ltrinstr = strpos($panel->PanelLabel, "F", $posinstr) ;
+                   if( $ltrinstr !== false ) {
+                     $pawseyChassisOffset = 40;
+                   }
+                 }
+               }
+             }
+           }
+         }
+       }
+
 			$pawseyN=0;
 			$pawseyL=1+$pawseyChassisOffset;
 			$pawseyR=2+$pawseyChassisOffset;
