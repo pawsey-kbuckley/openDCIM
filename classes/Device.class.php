@@ -694,6 +694,32 @@ class Device {
 		return true;
 	}
   
+	function MoveToGenStorage() {
+		// Cabinet ID of -1 means that the device is in the storage area
+		$this->Cabinet=-1;
+		// Position of 0 means that the device is in the general storage area
+		$this->Position=0;
+		$this->UpdateDevice();
+		
+		// While the child devices will automatically get moved to storage as part of the UpdateDevice() call above, it won't sever their network connections
+		// Multilevel chassis
+		if ($this->ChassisSlots>0 || $this->RearChassisSlots>0){
+			$descList=$this->GetDeviceDescendants();
+			foreach($descList as $child){
+				DevicePorts::removeConnections($child->DeviceID);
+			}
+		}
+
+		// Delete all network connections first
+		DevicePorts::removeConnections($this->DeviceID);
+		// Delete all power connections too
+		$pc=new PowerConnection();
+		$pc->DeviceID=$this->DeviceID;
+		$pc->DeleteConnections();
+
+		return true;
+	}
+  
 	function UpdateDevice() {
 		global $dbh;
 		/*

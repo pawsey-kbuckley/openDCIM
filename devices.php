@@ -683,6 +683,11 @@
 								$dev->UpdateDevice();
 							}
 							break;
+						case 'Mv2GSR':
+							// User has clicked the Move To GSR button: all other bets are off
+							$dev->SetTags($tagarray);
+							$dev->MoveToGenStorage();
+							break;
 						case 'Delete':
 							$dev->DeleteDevice();
 							//the $dev object should still exist even though we've deleted the db entry now
@@ -2476,6 +2481,7 @@ $connectioncontrols.=($dev->DeviceID>0 && !empty($portList))?'
 		if($dev->DeviceID >0){
 			echo '			<button type="submit" name="action" value="Update">',__("Update"),'</button>
 			<button type="submit" name="action" value="Copy">', __("Copy"), '</button>
+			<button type="submit" name="action" value="Mv2GSR">', __("MoveToGSR"), '</button>
 			<button type="button" name="audit">',__("Certify Audit"),'</button>';
 		} else {
 			echo '			<button type="submit" name="action" value="Create">',__("Create"),'</button>';
